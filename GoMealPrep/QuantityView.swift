@@ -9,7 +9,15 @@ import SwiftUI
 
 struct QuantityView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 4){
+            Image(systemName: "circle.circle")
+            Text("3")
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 5)
+        .background(.green1)
+        .foregroundStyle(.green2)
+        .clipShape(.rect(cornerRadius: 20))
     }
 }
 

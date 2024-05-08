@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    @State private var date = Date.now
 
     var body: some View {
         NavigationSplitView {
@@ -23,6 +24,12 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                
+                DatePicker(selection: $date, in: ...Date.now, displayedComponents: .date) {
+                    Text("Select a date")
+                }
+                .datePickerStyle(.compact)
+                .frame(maxHeight: 400)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

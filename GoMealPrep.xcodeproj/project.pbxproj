@@ -12,6 +12,10 @@
 		CEB7E8CD2BE83F7000AADAD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8CC2BE83F7000AADAD5 /* Item.swift */; };
 		CEB7E8CF2BE83F7400AADAD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB7E8CE2BE83F7400AADAD5 /* Assets.xcassets */; };
 		CEB7E8D22BE83F7400AADAD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB7E8D12BE83F7400AADAD5 /* Preview Assets.xcassets */; };
+		CEB7E8D92BEBAA4300AADAD5 /* OrganizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8D82BEBAA4300AADAD5 /* OrganizeView.swift */; };
+		CEB7E8DB2BEBB22100AADAD5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */; };
+		CEB7E8DD2BEBB3E700AADAD5 /* OrganizeCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */; };
+		CEB7E8DF2BEBB78700AADAD5 /* QuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		CEB7E8CC2BE83F7000AADAD5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CEB7E8CE2BE83F7400AADAD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB7E8D12BE83F7400AADAD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CEB7E8D82BEBAA4300AADAD5 /* OrganizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeView.swift; sourceTree = "<group>"; };
+		CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeCardCellView.swift; sourceTree = "<group>"; };
+		CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 			children = (
 				CEB7E8C82BE83F7000AADAD5 /* GoMealPrepApp.swift */,
 				CEB7E8CA2BE83F7000AADAD5 /* ContentView.swift */,
+				CEB7E8D82BEBAA4300AADAD5 /* OrganizeView.swift */,
+				CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */,
+				CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */,
+				CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */,
 				CEB7E8CC2BE83F7000AADAD5 /* Item.swift */,
 				CEB7E8CE2BE83F7400AADAD5 /* Assets.xcassets */,
 				CEB7E8D02BE83F7400AADAD5 /* Preview Content */,
@@ -107,11 +119,12 @@
 			};
 			buildConfigurationList = CEB7E8C02BE83F7000AADAD5 /* Build configuration list for PBXProject "GoMealPrep" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = CEB7E8BC2BE83F7000AADAD5;
 			productRefGroup = CEB7E8C62BE83F7000AADAD5 /* Products */;
@@ -140,9 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7E8DB2BEBB22100AADAD5 /* Meal.swift in Sources */,
 				CEB7E8CB2BE83F7000AADAD5 /* ContentView.swift in Sources */,
 				CEB7E8CD2BE83F7000AADAD5 /* Item.swift in Sources */,
 				CEB7E8C92BE83F7000AADAD5 /* GoMealPrepApp.swift in Sources */,
+				CEB7E8DF2BEBB78700AADAD5 /* QuantityView.swift in Sources */,
+				CEB7E8D92BEBAA4300AADAD5 /* OrganizeView.swift in Sources */,
+				CEB7E8DD2BEBB3E700AADAD5 /* OrganizeCardCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
