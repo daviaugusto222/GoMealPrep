@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct QuantityView: View {
+    var quantity: Int = 0
     var body: some View {
         HStack(spacing: 4){
             Image(systemName: "circle.circle")
-            Text("3")
+            Text("\(quantity)")
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 5)

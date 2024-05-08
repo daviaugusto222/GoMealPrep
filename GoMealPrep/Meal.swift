@@ -7,22 +7,18 @@
 
 import Foundation
 import SwiftUI
-struct Food: Identifiable, Hashable {
+struct Meal: Identifiable, Hashable {
     var name: String
-    var icon: String
-    var isFavorite: Bool
-    var color: Color
+    var quantity: Int
+    var fabricated: Date
+    var validity: String
     let id = UUID()
 
-    static func goodExamples() -> [Food] {
-        return [Food(name: "Apple", icon: "🍎", isFavorite: true, color: .red),
-                Food(name: "Orange", icon: "🍊", isFavorite: false, color: .orange),
-                Food(name: "Banana", icon: "🍌", isFavorite: false, color: .yellow)
+    static func goodExamples() -> [Meal] {
+        return [Meal(name: "Frango frito com arroz de brócolis e queijo com melancia", quantity: 3, fabricated: Date.now, validity: "10 de maio (4 dias)"),
+                Meal(name: "Macarrão com pé de galinha", quantity: 2, fabricated: Date.now, validity: "1 de maio (5 dias)"),
+                Meal(name: "Arroz frito com legumes", quantity: 1, fabricated: Date.now, validity: "25 de maio (9 dias)")
         ]
     }
 
-    static func unhealthyExamples() -> [Food] {
-        [Food(name: "Pizza", icon: "🍕", isFavorite: false, color: .blue),
-         Food(name: "Burger", icon: "🍔", isFavorite: false, color: .green)]
-    }
 }

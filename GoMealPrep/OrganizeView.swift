@@ -8,37 +8,47 @@
 import SwiftUI
 
 struct OrganizeView: View {
+
+
     var body: some View {
         NavigationStack{
-            List{
-                OrganizeCardCellView()
-                OrganizeCardCellView()
-                OrganizeCardCellView()
-                OrganizeCardCellView()
+            List(){
+                ForEach(Meal.goodExamples()) { meal in
+                    OrganizeCardCellView(mealRow: meal)
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(role: .destructive){
+                        //ação de deletar
+                    } label: {
+                        Label("", systemImage: "trash.fill" )
+                    }
+                    .foregroundStyle(.red, .red)
+                    .tint(.bege1)
+                }
+                
+                .listRowBackground(Color.clear)
+                .listRowInsets(.init())
+                .listRowSeparator(.hidden)
+
             }
+            .scrollIndicators(.hidden)
             .listStyle(.plain)
-            .padding(16)
+            .padding(.horizontal,16)
             .scrollContentBackground(.hidden)
             .listRowSpacing(16)
             .background(.bege1)
             .navigationTitle("Organizar")
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Image(systemName: "ellipsis.circle")
-                            .symbolRenderingMode(.monochrome)
-                            .foregroundStyle(.green2)
-                        
-                    })
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         Image(systemName: "plus.circle.fill")
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.green2, .green1)
+                            .font(.system(size: 20))
                     })
                 }
             }
+            
         }
     }
 }
