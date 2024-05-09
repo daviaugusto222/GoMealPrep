@@ -12,7 +12,7 @@ import SwiftData
 struct GoMealPrepApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Meal.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct GoMealPrepApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OrganizeView()
         }
         .modelContainer(sharedModelContainer)
     }

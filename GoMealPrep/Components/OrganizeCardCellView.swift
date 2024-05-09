@@ -44,6 +44,6 @@ struct OrganizeCardCellView: View {
 }
 
 #Preview {
-    OrganizeCardCellView(mealRow: Meal.goodExamples()[0])
+    OrganizeCardCellView(mealRow: Meal.exemple())
         .previewLayout(.sizeThatFits)
 }

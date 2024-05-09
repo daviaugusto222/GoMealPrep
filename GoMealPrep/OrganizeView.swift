@@ -6,29 +6,42 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct OrganizeView: View {
-
-
+    @Environment(\.modelContext) private var context
+    @Query private var meals: [Meal]
+    @State private var mealSelected: Meal?
+    @State private var showAddMeal = false
     var body: some View {
         NavigationStack{
             List(){
-                ForEach(Meal.goodExamples()) { meal in
-                    OrganizeCardCellView(mealRow: meal)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    Button(role: .destructive){
-                        //ação de deletar
+                ForEach(meals) { meal in
+                    Button{
+                        mealSelected = meal
                     } label: {
-                        Label("", systemImage: "trash.fill" )
+                        OrganizeCardCellView(mealRow: meal)
                     }
-                    .foregroundStyle(.red, .red)
-                    .tint(.bege1)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button(role: .destructive){
+                            context.delete(meal)
+                        } label: {
+                            Label("Delete", systemImage: "trash.fill" )
+                                .labelStyle(.iconOnly)
+                        }
+                        .foregroundStyle(.red, .red)
+                        .tint(.bege1)
+                    }
                 }
-                
                 .listRowBackground(Color.clear)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
+                .overlay {
+                    if meals.isEmpty {
+                        ContentUnavailableView.search
+                        
+                    }
+                }
 
             }
             .scrollIndicators(.hidden)
@@ -40,19 +53,37 @@ struct OrganizeView: View {
             .navigationTitle("Organizar")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button{
+                        showAddMeal.toggle()
+                    } label: {
                         Image(systemName: "plus.circle.fill")
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.green2, .green1)
                             .font(.system(size: 20))
-                    })
+                    }
+                    .sheet(isPresented: $showAddMeal) {
+                        AddMealView()
+                            .presentationDetents([.fraction(0.7)])
+//                            .presentationDetents([.medium])
+                    }
                 }
             }
-            
+            .navigationDestination(item: $mealSelected) { meal in
+                EditView(meal: meal)
+            }
         }
     }
+    
+    private func addMeal() {
+        withAnimation {
+            let meal = Meal(name: "Teste", quantity: 1, fabricated: Date.now, validity:"teste" )
+            context.insert(meal)
+        }
+    }
+    
 }
 
 #Preview {
     OrganizeView()
+        .modelContainer(for: Meal.self, inMemory: true)
 }
