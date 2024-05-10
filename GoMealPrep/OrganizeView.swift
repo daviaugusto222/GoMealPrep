@@ -36,6 +36,7 @@ struct OrganizeView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
+                            .padding(.horizontal,16)
                 .overlay {
                     if meals.isEmpty {
                         ContentUnavailableView.search
@@ -46,7 +47,6 @@ struct OrganizeView: View {
             }
             .scrollIndicators(.hidden)
             .listStyle(.plain)
-            .padding(.horizontal,16)
             .scrollContentBackground(.hidden)
             .listRowSpacing(16)
             .background(.bege1)
@@ -62,22 +62,15 @@ struct OrganizeView: View {
                             .font(.system(size: 20))
                     }
                     .sheet(isPresented: $showAddMeal) {
-                        AddMealView()
+                        AddEditMealView(isEdit: false, meal: Meal.exemple())
                             .presentationDetents([.fraction(0.7)])
-//                            .presentationDetents([.medium])
                     }
                 }
             }
-            .navigationDestination(item: $mealSelected) { meal in
-                EditView(meal: meal)
+            .sheet(item: $mealSelected) { item in
+                    AddEditMealView(isEdit: true, meal: item)
+                        .presentationDetents([.fraction(0.7)])
             }
-        }
-    }
-    
-    private func addMeal() {
-        withAnimation {
-            let meal = Meal(name: "Teste", quantity: 1, fabricated: Date.now, validity:"teste" )
-            context.insert(meal)
         }
     }
     

@@ -15,17 +15,20 @@ final class Meal{
     var quantity: Int
     var fabricated: Date
     var validity: String
+//    var photo: Image
     let id = UUID()
+    var photo: Data?
     
-    init(name: String, quantity: Int, fabricated: Date, validity: String) {
+    init(name: String, quantity: Int, fabricated: Date, validity: String, photo: Data?) {
         self.name = name
         self.quantity = quantity
         self.fabricated = fabricated
         self.validity = validity
+        self.photo = photo
     }
     
     static func exemple() -> Meal {
-        Meal(name: "Componente Meal", quantity: 3, fabricated: Date.now, validity: "2 dias para vencimento" )
+        Meal(name: "Componente Meal", quantity: 3, fabricated: Date.now, validity: "2 dias para vencimento", photo: nil)
     }
 
 }

@@ -11,11 +11,22 @@ struct OrganizeCardCellView: View {
     var mealRow: Meal
     var body: some View {
         HStack(alignment:.top, spacing:8){
-            Image(.meal)
-                .resizable()
-                .frame(width: 103, height: 103)
-                .scaledToFit()
-                .clipShape(.rect(cornerRadius: 16))
+            
+            if let photo = mealRow.photo,
+               let uiImage = UIImage(data: photo) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 103, height: 103)
+                    .clipShape(.rect(cornerRadius: 16))
+            } else {
+                Image(.meal)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 103, height: 103)
+                    .clipShape(.rect(cornerRadius: 16))
+                    
+            }
             VStack(alignment: .leading, spacing: 0){
                 
                 HStack {
