@@ -12,31 +12,26 @@ struct AddEditMealView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
     
-//    @State private var photo: Data = Data()
-//    @State private var nameText: String = ""
-//    @State private var quantity: Int = 1
-//    @State private var fabricationDate: Date = Date.now
-    @FocusState private var nameIsFocused: Bool
     @State var isEdit: Bool
-    
     @Bindable var meal: Meal
     
     var body: some View {
         NavigationStack {
-            List{
-                
-                Section{
-                    PhotoPickerView(photo: $meal.photo, isEdit: $isEdit)
-                }
-                .listRowBackground(Color.clear)
-                .listRowInsets(.init())
-                .listRowSeparator(.hidden)
+            
+            Form{
+                PhotoPickerView(photo: $meal.photo, isEdit: $isEdit)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowSeparator(.hidden)
+                    .buttonStyle(.plain)
                 
                 Section {
                     TextField("Nome do prato", text: $meal.name)
-                        .focused($nameIsFocused)
+                        .autocorrectionDisabled(false)
+                        .scrollDismissesKeyboard(.immediately)
+                        .keyboardType(.default)
+                        .submitLabel(.done)
                 }
-                
                 Section {
                     Stepper(value: $meal.quantity, in: 0...50){
                         HStack(alignment: .center){
@@ -48,30 +43,46 @@ struct AddEditMealView: View {
                     }
                     
                 }
-                
                 Section {
-                    HStack {
-                        DatePicker(selection: $meal.fabricated, displayedComponents: .date){
-                            Label("Fabricação", systemImage: "calendar")
-                        }
-                        .datePickerStyle(.compact)
-                        .tint(.green2)
-                        // add this nameIsFocused = false
+                    
+                    DatePicker(selection: $meal.fabricated, displayedComponents: .date){
+                        Label("Fabricação", systemImage: "calendar")
                     }
+                    .datePickerStyle(.compact)
+                    
                     HStack(alignment: .center) {
                         Label("Validade", systemImage: "calendar.badge.clock")
                         Spacer()
                         Text("10 de Maio (4 dias)")
                     }
                 } footer: {
-                    Text("Data de validade calculada a partir de parâmetros padrões de congelamento.")
-                        .multilineTextAlignment(.center)
+                    VStack(spacing: 16){
+                        Text("Data de validade calculada a partir de parâmetros padrões de congelamento.")
+                            .multilineTextAlignment(.center)
+                        HStack{
+                            Spacer()
+                            Button(role: .destructive){
+                                context.delete(meal)
+                                dismiss()
+                            } label: {
+                                Text("Excluir refeição")
+                            }
+                            Spacer()
+                        }
+                        .opacity(isEdit ? 1 : 0)
+                    }
                 }
+                
             }
-            .scrollDisabled(true)
-            .tint(.bege2)
+            .contentMargins(.top, 0, for: .scrollContent)
+            .scrollDisabled(false)
             .listSectionSpacing(16)
             .navigationTitle(isEdit ? "Editar refeição" :"Adicionar receição")
+            .navigationBarTitleDisplayMode(.inline)
+            .scrollContentBackground(.hidden)
+            .background(.bege1)
+            .listRowInsets(.init())
+            .scrollDismissesKeyboard(.interactively)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(){
@@ -91,8 +102,9 @@ struct AddEditMealView: View {
                     }
                 }
             }
-            .tint(.green2)
         }
+        .tint(.green2)
+        
     }
     
     private func addMeal() {

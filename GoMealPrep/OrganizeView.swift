@@ -15,14 +15,14 @@ struct OrganizeView: View {
     @State private var showAddMeal = false
     var body: some View {
         NavigationStack{
-            List(){
+            List{
                 ForEach(meals) { meal in
                     Button{
                         mealSelected = meal
                     } label: {
                         OrganizeCardCellView(mealRow: meal)
                     }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive){
                             context.delete(meal)
                         } label: {
@@ -36,14 +36,8 @@ struct OrganizeView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
-                            .padding(.horizontal,16)
-                .overlay {
-                    if meals.isEmpty {
-                        ContentUnavailableView.search
-                        
-                    }
-                }
-
+                .padding(.horizontal,16)
+                
             }
             .scrollIndicators(.hidden)
             .listStyle(.plain)
@@ -51,6 +45,17 @@ struct OrganizeView: View {
             .listRowSpacing(16)
             .background(.bege1)
             .navigationTitle("Organizar")
+            .overlay {
+                if meals.isEmpty {
+                    ContentUnavailableView {
+                        Label("Organize sua alimentação", systemImage: "circle.circle")
+                            .foregroundStyle(.primary, .bege2)
+                    } description: {
+                        Text("Use o + para adicionar as refeições que você planeja para os próximos dias.")
+                    }
+                    
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
@@ -62,14 +67,14 @@ struct OrganizeView: View {
                             .font(.system(size: 20))
                     }
                     .sheet(isPresented: $showAddMeal) {
-                        AddEditMealView(isEdit: false, meal: Meal.exemple())
-                            .presentationDetents([.fraction(0.7)])
+                        AddEditMealView(isEdit: false, meal: Meal(name: "", quantity: 1, fabricated: Date.now, validity: "", photo: nil))
+                            .presentationDetents([.fraction(0.75), .large])
                     }
                 }
             }
             .sheet(item: $mealSelected) { item in
-                    AddEditMealView(isEdit: true, meal: item)
-                        .presentationDetents([.fraction(0.7)])
+                AddEditMealView(isEdit: true, meal: item)
+                    .presentationDetents([.fraction(0.75), .large])
             }
         }
     }

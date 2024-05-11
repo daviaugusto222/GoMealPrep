@@ -20,12 +20,16 @@ struct OrganizeCardCellView: View {
                     .frame(width: 103, height: 103)
                     .clipShape(.rect(cornerRadius: 16))
             } else {
-                Image(.meal)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 103, height: 103)
-                    .clipShape(.rect(cornerRadius: 16))
-                    
+                HStack{
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 51)
+                        .foregroundStyle(.green2)
+                }
+                .frame(width: 103, height: 103, alignment: .center)
+                .background(.green1)
+                .clipShape(RoundedRectangle(cornerRadius: 16.0))     
             }
             VStack(alignment: .leading, spacing: 0){
                 
@@ -42,13 +46,13 @@ struct OrganizeCardCellView: View {
                     Text("\(mealRow.validity)")
                         .font(.system(size: 13))
                         .fontWeight(.regular)
-                        .foregroundStyle(.bege2)
+                        .foregroundStyle(.secondary)
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(8)
-        .background(.white)
+        .background(.cardBackground)
         .clipShape(.rect(cornerRadius: 24))
         .shadow(color:Color(red: 0, green: 0, blue: 0,opacity: 0.05), radius: 5, x: 0, y: 3)
     }

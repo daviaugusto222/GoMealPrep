@@ -41,7 +41,6 @@ struct PhotoPickerView: View {
                         withAnimation {
                             photoItem = nil
                             photo = nil
-                            
                         }
                     } label: {
                         Label("Remover", systemImage: "xmark")
@@ -52,7 +51,7 @@ struct PhotoPickerView: View {
                             .foregroundStyle(.red)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
-                            .background(.bege1)
+                            .background(.begeButton)
                             .clipShape(Capsule())
                     }
                         .shadow(color: .green2.opacity(0.18), radius: 5, x: 0.0, y: 1.0)
@@ -70,7 +69,7 @@ struct PhotoPickerView: View {
                             .foregroundStyle(.green2)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
-                            .background(.bege1)
+                            .background(.begeButton)
                             .clipShape(Capsule())
                     }
                     .shadow(color: .green2.opacity(0.18), radius: 5, x: 0.0, y: 1.0)
@@ -80,12 +79,12 @@ struct PhotoPickerView: View {
                 }
                 
             }
-            .padding()
+            .padding(.bottom,8)
             .task(id: photoItem) {
                 if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                     photo = data
                 } else {
-                    print("load falhou")
+//                    print("load falhou")
                 }
             }
             Spacer()
