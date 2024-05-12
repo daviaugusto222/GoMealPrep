@@ -28,9 +28,9 @@ final class Meal{
     }
     
     static func exemple() -> Meal {
-        let photoItem = UIImage(resource: .meal2)
+//        let photoItem = UIImage(resource: .meal2)
         
-        return Meal(name: "Frango frito com arroz de brócolis", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: photoItem.pngData() )
+        return Meal(name: "Frango frito com arroz de brócolis", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: Data() )
     }
     
     static func exempleWithoutPhoto() -> Meal {
