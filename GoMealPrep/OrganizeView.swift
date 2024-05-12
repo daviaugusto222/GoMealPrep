@@ -10,9 +10,10 @@ import SwiftData
 
 struct OrganizeView: View {
     @Environment(\.modelContext) private var context
-    @Query private var meals: [Meal]
+    @Query(sort: \Meal.expiration) private var meals: [Meal]
     @State private var mealSelected: Meal?
     @State private var showAddMeal = false
+    @State private var animate = 0
     var body: some View {
         NavigationStack{
             List{
@@ -50,6 +51,7 @@ struct OrganizeView: View {
                     ContentUnavailableView {
                         Label("Organize sua alimentação", systemImage: "circle.circle")
                             .foregroundStyle(.primary, .bege2)
+                            .symbolRenderingMode(.hierarchical)
                     } description: {
                         Text("Use o + para adicionar as refeições que você planeja para os próximos dias.")
                     }
@@ -59,6 +61,7 @@ struct OrganizeView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
+                        animate += 1
                         showAddMeal.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
@@ -66,8 +69,10 @@ struct OrganizeView: View {
                             .foregroundStyle(.green2, .green1)
                             .font(.system(size: 20))
                     }
+                    .symbolEffect(.bounce.up, value: animate)
+                    .sensoryFeedback(.selection, trigger: animate)
                     .sheet(isPresented: $showAddMeal) {
-                        AddEditMealView(isEdit: false, meal: Meal(name: "", quantity: 1, fabricated: Date.now, validity: "", photo: nil))
+                        AddEditMealView(isEdit: false, meal: Meal(name: "", quantity: 1, fabricated: Date.now, expiration: Date.now, photo: nil))
                             .presentationDetents([.fraction(0.75), .large])
                     }
                 }
@@ -76,8 +81,10 @@ struct OrganizeView: View {
                 AddEditMealView(isEdit: true, meal: item)
                     .presentationDetents([.fraction(0.75), .large])
             }
+            .fontDesign(.rounded)
         }
     }
+    
     
 }
 

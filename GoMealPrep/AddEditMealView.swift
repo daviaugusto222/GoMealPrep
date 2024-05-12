@@ -15,6 +15,21 @@ struct AddEditMealView: View {
     @State var isEdit: Bool
     @Bindable var meal: Meal
     
+    @State private var animate = 0
+    
+    var timeUntil: Int = 7
+    var expiration: Date {
+        let calendario = Calendar.current
+        meal.expiration = calendario.date(byAdding: .day, value: timeUntil, to: meal.fabricated)!
+        return meal.expiration
+        }
+    
+    func formatarData(_ data: Date) -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d 'de' MMM"
+            return formatter.string(from: data)
+        }
+    
     var body: some View {
         NavigationStack {
             
@@ -24,6 +39,7 @@ struct AddEditMealView: View {
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .listRowSeparator(.hidden)
                     .buttonStyle(.plain)
+                    
                 
                 Section {
                     TextField("Nome do prato", text: $meal.name)
@@ -45,6 +61,7 @@ struct AddEditMealView: View {
                 }
                 Section {
                     
+                    
                     DatePicker(selection: $meal.fabricated, displayedComponents: .date){
                         Label("Fabricação", systemImage: "calendar")
                     }
@@ -53,7 +70,7 @@ struct AddEditMealView: View {
                     HStack(alignment: .center) {
                         Label("Validade", systemImage: "calendar.badge.clock")
                         Spacer()
-                        Text("10 de Maio (4 dias)")
+                        Text("\(formatarData(expiration))")
                     }
                 } footer: {
                     VStack(spacing: 16){

@@ -54,10 +54,10 @@ struct PhotoPickerView: View {
                             .background(.begeButton)
                             .clipShape(Capsule())
                     }
-                        .shadow(color: .green2.opacity(0.18), radius: 5, x: 0.0, y: 1.0)
-                        .alignmentGuide(.bottom, computeValue: { dimension in
-                            dimension[VerticalAlignment.center]
-                        })
+                    .shadow(color: .green2.opacity(0.18), radius: 5, x: 0.0, y: 1.0)
+                    .alignmentGuide(.bottom, computeValue: { dimension in
+                        dimension[VerticalAlignment.center]
+                    })
                 } else {
                     PhotosPicker(selection: $photoItem, matching: .images) {
                         
@@ -84,7 +84,7 @@ struct PhotoPickerView: View {
                 if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                     photo = data
                 } else {
-//                    print("load falhou")
+                    //                    print("load falhou")
                 }
             }
             Spacer()

@@ -8,27 +8,33 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 @Model
 final class Meal{
     var name: String
     var quantity: Int
     var fabricated: Date
-    var validity: String
-//    var photo: Image
-    let id = UUID()
+    var expiration: Date
     var photo: Data?
+    let id = UUID()
     
-    init(name: String, quantity: Int, fabricated: Date, validity: String, photo: Data?) {
+    init(name: String, quantity: Int, fabricated: Date, expiration: Date, photo: Data?) {
         self.name = name
         self.quantity = quantity
         self.fabricated = fabricated
-        self.validity = validity
+        self.expiration = expiration
         self.photo = photo
     }
     
     static func exemple() -> Meal {
-        Meal(name: "Componente Meal", quantity: 3, fabricated: Date.now, validity: "2 dias para vencimento", photo: nil)
+        let photoItem = UIImage(resource: .meal2)
+        
+        return Meal(name: "Frango frito com arroz de brócolis", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: photoItem.pngData() )
+    }
+    
+    static func exempleWithoutPhoto() -> Meal {
+        return Meal(name: "Componente Meal", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: Data() )
     }
 
 }
