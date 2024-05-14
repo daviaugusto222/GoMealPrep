@@ -19,6 +19,12 @@ final class Meal{
     var photo: Data?
     let id = UUID()
     
+    var expirationFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d 'de' MMM"
+        return formatter.string(from: expiration)
+    }
+    
     init(name: String, quantity: Int, fabricated: Date, expiration: Date, photo: Data?) {
         self.name = name
         self.quantity = quantity

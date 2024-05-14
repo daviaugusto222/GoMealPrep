@@ -17,23 +17,10 @@ struct AddEditMealView: View {
     
     @State private var animate = 0
     
-    var timeUntil: Int = 7
-    var expiration: Date {
-        let calendario = Calendar.current
-        meal.expiration = calendario.date(byAdding: .day, value: timeUntil, to: meal.fabricated)!
-        return meal.expiration
-        }
-    
-    func formatarData(_ data: Date) -> String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d 'de' MMM"
-            return formatter.string(from: data)
-        }
-    
     var body: some View {
         NavigationStack {
             
-            Form{
+            Form {
                 PhotoPickerView(photo: $meal.photo, isEdit: $isEdit)
                     .listRowBackground(Color.clear)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -70,7 +57,7 @@ struct AddEditMealView: View {
                     HStack(alignment: .center) {
                         Label("Validade", systemImage: "calendar.badge.clock")
                         Spacer()
-                        Text("\(formatarData(expiration))")
+                        Text("\(meal.expirationFormatted)")
                     }
                 } footer: {
                     VStack(spacing: 16){
@@ -121,9 +108,30 @@ struct AddEditMealView: View {
             }
         }
         .tint(.green2)
-        
+        .onChange(of: meal.fabricated) { _, newValue in
+            meal.expiration = Calendar.current.date(
+                byAdding: .day,
+                value: 7, // mockado, depois vai virar regra de negocio
+                to: newValue
+            )!
+        }
     }
     
+    // Sugestao de modelagem de regra de negocio pra calcular o expiration
+//    enum Tag {
+//        case congelado
+//        case natural
+//        
+//        var validDays: Int {
+//            switch self {
+//            case .congelado:
+//                return 60
+//            case .natural:
+//                return 7
+//            }
+//        }
+//    }
+//    
     private func addMeal() {
         withAnimation {
             if !isEdit {
