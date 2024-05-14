@@ -10,7 +10,7 @@ import SwiftUI
 struct QuantityView: View {
     var quantity: Int = 0
     var body: some View {
-        HStack(spacing: 4){
+        HStack(spacing: 4) {
             Image(systemName: "circle.circle")
             Text("\(quantity)")
         }

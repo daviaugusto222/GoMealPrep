@@ -15,16 +15,16 @@ struct OrganizeView: View {
     @State private var showAddMeal = false
     @State private var animate = 0
     var body: some View {
-        NavigationStack{
-            List{
+        NavigationStack {
+            List {
                 ForEach(meals) { meal in
-                    Button{
+                    Button {
                         mealSelected = meal
                     } label: {
                         OrganizeCardCellView(mealRow: meal)
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Button(role: .destructive){
+                        Button(role: .destructive) {
                             context.delete(meal)
                         } label: {
                             Label("Delete", systemImage: "trash.fill" )
@@ -37,15 +37,14 @@ struct OrganizeView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
-                .padding(.horizontal,16)
-                
+                .padding(.horizontal, 16)
             }
+            .navigationTitle("Organizar")
             .scrollIndicators(.hidden)
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .listRowSpacing(16)
             .background(.bege1)
-            .navigationTitle("Organizar")
             .overlay {
                 if meals.isEmpty {
                     ContentUnavailableView {
@@ -55,16 +54,15 @@ struct OrganizeView: View {
                     } description: {
                         Text("Use o + para adicionar as refeições que você planeja para os próximos dias.")
                     }
-                    
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button{
+                    Button {
                         animate += 1
                         showAddMeal.toggle()
                     } label: {
-                        Image(systemName: "plus.circle.fill")
+                        Label("Adicionar Refeição", systemImage: "plus.circle.fill")
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.green2, .green1)
                             .font(.system(size: 20))
@@ -72,7 +70,7 @@ struct OrganizeView: View {
                     .symbolEffect(.bounce.up, value: animate)
                     .sensoryFeedback(.selection, trigger: animate)
                     .sheet(isPresented: $showAddMeal) {
-                        AddEditMealView(isEdit: false, meal: Meal(name: "", quantity: 1, fabricated: Date.now, expiration: Date.now, photo: nil))
+                        AddEditMealView(isEdit: false, meal: Meal.emptyMeal())
                             .presentationDetents([.fraction(0.75), .large])
                     }
                 }
@@ -84,8 +82,6 @@ struct OrganizeView: View {
             .fontDesign(.rounded)
         }
     }
-    
-    
 }
 
 #Preview {

@@ -11,20 +11,18 @@ import SwiftData
 import PhotosUI
 
 @Model
-final class Meal{
+final class Meal {
     var name: String
     var quantity: Int
     var fabricated: Date
     var expiration: Date
     var photo: Data?
     let id = UUID()
-    
     var expirationFormatted: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d 'de' MMM"
         return formatter.string(from: expiration)
     }
-    
     init(name: String, quantity: Int, fabricated: Date, expiration: Date, photo: Data?) {
         self.name = name
         self.quantity = quantity
@@ -32,15 +30,11 @@ final class Meal{
         self.expiration = expiration
         self.photo = photo
     }
-    
-    static func exemple() -> Meal {
-//        let photoItem = UIImage(resource: .meal2)
-        
-        return Meal(name: "Frango frito com arroz de brócolis", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: Data() )
-    }
-    
     static func exempleWithoutPhoto() -> Meal {
         return Meal(name: "Componente Meal", quantity: 3, fabricated: Date.now, expiration: Date.now, photo: Data() )
+    }
+    static func emptyMeal() -> Meal {
+        Meal(name: "", quantity: 1, fabricated: Date.now, expiration: Date.now, photo: nil)
     }
 
 }

@@ -12,11 +12,8 @@ struct MealView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Meal.expiration) private var meals: [Meal]
     @State private var mealSelected: Meal?
-    
     let columns = [ GridItem(.adaptive(minimum: 171, maximum: .infinity), spacing: 16),
                     GridItem(.adaptive(minimum: 171, maximum: .infinity), spacing: 16)]
-    
-    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -40,7 +37,6 @@ struct MealView: View {
                     } description: {
                         Text("Adicione novas refeições em Organizar para começar uma novo planejamento.")
                     }
-                    
                 }
             }
         }

@@ -11,31 +11,28 @@ import PhotosUI
 struct PhotoPickerView: View {
     @State private var photoItem: PhotosPickerItem?
     @Binding var photo: Data?
-    @Binding var isEdit: Bool
+    var isEdit: Bool
     var body: some View {
-        
         HStack {
             Spacer()
-            ZStack(alignment: .bottom){
-                ZStack{
+            ZStack(alignment: .bottom) {
+                ZStack {
                     Image(systemName: "photo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 51)
                         .foregroundStyle(.green2)
-                    
                     if let photo,
                        let uiImage = UIImage(data: photo) {
                         Image(uiImage: uiImage)
                             .resizable()
+                            .accessibilityHidden(true)
                             .aspectRatio(contentMode: .fill)
                     }
-                    
                 }
                 .frame(width: 125, height: 125, alignment: .center)
                 .background(.green1)
                 .clipShape(RoundedRectangle(cornerRadius: 24.0))
-                
                 if photo != nil {
                     Button(role: .destructive) {
                         withAnimation {
@@ -60,7 +57,6 @@ struct PhotoPickerView: View {
                     })
                 } else {
                     PhotosPicker(selection: $photoItem, matching: .images) {
-                        
                         Label(isEdit == false ? "Add" : "Edit", systemImage: "camera")
                             .labelStyle(.titleAndIcon)
                             .font(.system(size: 15))
@@ -77,9 +73,8 @@ struct PhotoPickerView: View {
                         dimension[VerticalAlignment.center]
                     })
                 }
-                
             }
-            .padding(.bottom,8)
+            .padding(.bottom, 8)
             .task(id: photoItem) {
                 if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                     photo = data
@@ -90,11 +85,8 @@ struct PhotoPickerView: View {
             Spacer()
         }
     }
-    
 }
-
 
 #Preview {
-    PhotoPickerView(photo: .constant(Data()), isEdit: .constant(false))
+    PhotoPickerView(photo: .constant(Data()), isEdit: false)
 }
-

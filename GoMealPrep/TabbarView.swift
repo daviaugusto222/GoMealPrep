@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TabbarView: View {
-    
     var body: some View {
         TabView {
             OrganizeView()
@@ -22,9 +21,7 @@ struct TabbarView: View {
             TipView()
                 .tabItem {
                     Label("Doação", systemImage: "heart")
-                        
                 }
-                
         }
         .fontDesign(.rounded)
         .tint(.green2)

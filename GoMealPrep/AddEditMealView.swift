@@ -11,23 +11,16 @@ import PhotosUI
 struct AddEditMealView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
-    
-    @State var isEdit: Bool
+    var isEdit: Bool
     @Bindable var meal: Meal
-    
-    @State private var animate = 0
-    
     var body: some View {
         NavigationStack {
-            
             Form {
-                PhotoPickerView(photo: $meal.photo, isEdit: $isEdit)
+                PhotoPickerView(photo: $meal.photo, isEdit: isEdit)
                     .listRowBackground(Color.clear)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .listRowSeparator(.hidden)
                     .buttonStyle(.plain)
-                    
-                
                 Section {
                     TextField("Nome do prato", text: $meal.name)
                         .autocorrectionDisabled(false)
@@ -36,36 +29,32 @@ struct AddEditMealView: View {
                         .submitLabel(.done)
                 }
                 Section {
-                    Stepper(value: $meal.quantity, in: 0...50){
-                        HStack(alignment: .center){
+                    Stepper(value: $meal.quantity, in: 0...50) {
+                        HStack(alignment: .center) {
                             Label("Quantidade", systemImage: "circle.circle")
                             Spacer()
                             Text("\(meal.quantity)")
                                 .padding(.horizontal)
                         }
                     }
-                    
                 }
                 Section {
-                    
-                    
-                    DatePicker(selection: $meal.fabricated, displayedComponents: .date){
+                    DatePicker(selection: $meal.fabricated, displayedComponents: .date) {
                         Label("Fabricação", systemImage: "calendar")
                     }
                     .datePickerStyle(.compact)
-                    
                     HStack(alignment: .center) {
                         Label("Validade", systemImage: "calendar.badge.clock")
                         Spacer()
                         Text("\(meal.expirationFormatted)")
                     }
                 } footer: {
-                    VStack(spacing: 16){
+                    VStack(spacing: 16) {
                         Text("Data de validade calculada a partir de parâmetros padrões de congelamento.")
                             .multilineTextAlignment(.center)
-                        HStack{
+                        HStack {
                             Spacer()
-                            Button(role: .destructive){
+                            Button(role: .destructive) {
                                 context.delete(meal)
                                 dismiss()
                             } label: {
@@ -76,7 +65,6 @@ struct AddEditMealView: View {
                         .opacity(isEdit ? 1 : 0)
                     }
                 }
-                
             }
             .contentMargins(.top, 0, for: .scrollContent)
             .scrollDisabled(false)
@@ -89,17 +77,16 @@ struct AddEditMealView: View {
             .scrollDismissesKeyboard(.interactively)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(){
+                    Button {
                         addMeal()
                     } label: {
                         Text(isEdit ? "OK" : "Salvar")
                             .fontWeight(.semibold)
                     }
                     .disabled(meal.name == "" ? true : false)
-                    
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(role: .cancel){
+                    Button(role: .cancel) {
                         dismiss()
                     } label: {
                         Text("Cancelar")
@@ -116,7 +103,6 @@ struct AddEditMealView: View {
             )!
         }
     }
-    
     // Sugestao de modelagem de regra de negocio pra calcular o expiration
 //    enum Tag {
 //        case congelado
@@ -143,7 +129,5 @@ struct AddEditMealView: View {
 }
 
 #Preview {
-    AddEditMealView(isEdit: false, meal: Meal.exemple())
+    AddEditMealView(isEdit: false, meal: Meal.emptyMeal())
 }
-
-
