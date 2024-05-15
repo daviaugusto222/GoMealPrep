@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct GoMealPrepApp: App {
+    @StateObject private var store = TipStore()
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Meal.self
@@ -26,6 +27,7 @@ struct GoMealPrepApp: App {
     var body: some Scene {
         WindowGroup {
             TabbarView()
+                .environmentObject(store)
         }
         .modelContainer(sharedModelContainer)
     }

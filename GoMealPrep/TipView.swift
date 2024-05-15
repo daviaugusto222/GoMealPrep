@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct TipView: View {
+    @EnvironmentObject private var store: TipStore
+    @State private var myProduct: Product?
     var body: some View {
         ScrollView {
             ZStack {
@@ -22,25 +25,25 @@ struct TipView: View {
                             .fontWeight(.regular)
                     }
                     .multilineTextAlignment(.center)
-                    Button {
-                        // TODO: Add subscription action to buy a tip 0,99
-                    } label: {
-                        TipCardView(title: "Me compre um 🍵", description: "Vou me acalmar e construir a próxima feature com mais tranquilidade.", price: "R$0,99")
+                    ForEach(store.items) { item in
+                        TipCardView(item: item)
                     }
-                    Button {
-                        // TODO: Add subscription action to buy a tip 4,99
-                    } label: {
-                        TipCardView(title: "Me compre um 🍪", description: "Um doce sempre cai bem depois do almoço.", price: "R$4,99")
+                    .padding(.vertical, 30)
+                    .padding(.horizontal, 16)
+                    .background( Color.bege1.opacity(0.7) )
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 24.0)
+                            .stroke(Color.green1, lineWidth: 6)
+                            .opacity(0.4)
                     }
-                    Button {
-                        // TODO: Add subscription action to buy a tip 10,99
-                    } label: {
-                        TipCardView(title: "Me compre uma 🍕", description: "Já vou adicionar isso ao meu planejamento!", price: "R$10,99")
-                    }
+                    .foregroundStyle(.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 24.0))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .buttonStyle(SelectedButton())
                 .padding(20)
+                .task {
+                    myProduct = try? await Product.products(for: ["com.david.GoMealPrep.tinyTip"]).first
+                }
             }
         }
         .background {
@@ -53,20 +56,19 @@ struct TipView: View {
 }
 
 struct TipCardView: View {
-    var title = "Me compre um chá 🍵"
-    var description = "Vou me acalmar e construir a próxima feature com mais tranquilidade."
-    var price = "R$1,99"
+    @EnvironmentObject private var store: TipStore
+    let item: Product?
     @State private var showAlert = false
     var body: some View {
         HStack(alignment: .center, spacing: 1) {
             VStack(alignment: .leading) {
-                Text(title)
+                Text(item?.displayName ?? "-")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(.title)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                Text(description)
+                Text(item?.description ?? "-")
                     .font(.caption)
                     .fontWeight(.regular)
                     .foregroundStyle(.title)
@@ -74,36 +76,35 @@ struct TipCardView: View {
                     .multilineTextAlignment(.leading)
             }
             Spacer()
-            Button(price) {
-                showAlert = true
+            Button(item?.displayPrice ?? "-") {
+                if let item = item {
+                    Task {
+                        await store.purchase(item)
+                    }
+                }
             }
             .buttonStyle(.borderedProminent)
             .foregroundStyle(.green2)
             .tint(.green1)
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Em breve!"), message: Text("Aguarda mais um pouco ainda to aprendendo essa parte ✨"), dismissButton: .default(Text("OK!")))
+            .onChange(of: store.action) { _, action in
+                if action == .successful {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showAlert = true
+                        store.reset()
+                    }
+                }
             }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Muito obrigado!"), message: Text("Fico feliz que esteja gostando do app, em breve mais atualizações ✨"), dismissButton: .default(Text("OK!")))
+            }
+            .alert(isPresented: $store.hasError, error: store.error) {}
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .fontDesign(.rounded)
     }
 }
-struct SelectedButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, 30)
-            .padding(.horizontal, 16)
-            .background( Color.bege1.opacity(0.7) )
-            .overlay {
-                RoundedRectangle(cornerRadius: 24.0)
-                    .stroke(Color.green1, lineWidth: 6)
-                    .opacity(0.4)
-            }
-            .foregroundStyle(.black)
-            .clipShape(RoundedRectangle(cornerRadius: 24.0))
-    }
-}
 
 #Preview {
     TipView()
+        .environmentObject(TipStore())
 }

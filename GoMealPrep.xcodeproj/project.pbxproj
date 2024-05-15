@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0CF0AE2BF44FD0006FB4C0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */; };
+		CE0CF0B42BF4568D006FB4C0 /* TipStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CF0B32BF454E1006FB4C0 /* TipStore.swift */; };
+		CE0CF0B52BF45693006FB4C0 /* MyProductsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CF0B12BF4549E006FB4C0 /* MyProductsIdentifiers.swift */; };
 		CE102D032BED4DFF006795BD /* AddEditMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE102D022BED4DFF006795BD /* AddEditMealView.swift */; };
 		CEADF6C22BEE59BC006277D8 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADF6C12BEE59BC006277D8 /* PhotoPickerView.swift */; };
 		CEADF6C42BEFE403006277D8 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADF6C32BEFE403006277D8 /* TabbarView.swift */; };
@@ -23,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CE0CF0AF2BF45039006FB4C0 /* MyTipsStoreKitConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyTipsStoreKitConfiguration.storekit; sourceTree = "<group>"; };
+		CE0CF0B12BF4549E006FB4C0 /* MyProductsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductsIdentifiers.swift; sourceTree = "<group>"; };
+		CE0CF0B32BF454E1006FB4C0 /* TipStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipStore.swift; sourceTree = "<group>"; };
 		CE102D022BED4DFF006795BD /* AddEditMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditMealView.swift; sourceTree = "<group>"; };
 		CEADF6C12BEE59BC006277D8 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		CEADF6C32BEFE403006277D8 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
@@ -44,12 +51,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0CF0AE2BF44FD0006FB4C0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE0CF0AC2BF44FD0006FB4C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE102CFE2BED34C8006795BD /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +90,7 @@
 			children = (
 				CEB7E8C72BE83F7000AADAD5 /* GoMealPrep */,
 				CEB7E8C62BE83F7000AADAD5 /* Products */,
+				CE0CF0AC2BF44FD0006FB4C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +105,9 @@
 		CEB7E8C72BE83F7000AADAD5 /* GoMealPrep */ = {
 			isa = PBXGroup;
 			children = (
+				CE0CF0AF2BF45039006FB4C0 /* MyTipsStoreKitConfiguration.storekit */,
+				CE0CF0B12BF4549E006FB4C0 /* MyProductsIdentifiers.swift */,
+				CE0CF0B32BF454E1006FB4C0 /* TipStore.swift */,
 				CEB7E8C82BE83F7000AADAD5 /* GoMealPrepApp.swift */,
 				CEADF6C32BEFE403006277D8 /* TabbarView.swift */,
 				CEB7E8D82BEBAA4300AADAD5 /* OrganizeView.swift */,
@@ -212,12 +232,14 @@
 				CEADF6C82BEFE5BD006277D8 /* TipView.swift in Sources */,
 				CEB7E8C92BE83F7000AADAD5 /* GoMealPrepApp.swift in Sources */,
 				CEADF6C22BEE59BC006277D8 /* PhotoPickerView.swift in Sources */,
+				CE0CF0B52BF45693006FB4C0 /* MyProductsIdentifiers.swift in Sources */,
 				CE102D032BED4DFF006795BD /* AddEditMealView.swift in Sources */,
 				CEB7E8DF2BEBB78700AADAD5 /* QuantityView.swift in Sources */,
 				CEB7E8D92BEBAA4300AADAD5 /* OrganizeView.swift in Sources */,
 				CEADF6CA2BEFEA1E006277D8 /* MealCardView.swift in Sources */,
 				CEB7E8DD2BEBB3E700AADAD5 /* OrganizeCardCellView.swift in Sources */,
 				CEADF6C62BEFE461006277D8 /* MealView.swift in Sources */,
+				CE0CF0B42BF4568D006FB4C0 /* TipStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

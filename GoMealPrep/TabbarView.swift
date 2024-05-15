@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabbarView: View {
+    @EnvironmentObject private var store: TipStore
     var body: some View {
         TabView {
             OrganizeView()
@@ -22,6 +23,7 @@ struct TabbarView: View {
                 .tabItem {
                     Label("Doação", systemImage: "heart")
                 }
+                .environmentObject(store)
         }
         .fontDesign(.rounded)
         .tint(.green2)
@@ -31,4 +33,5 @@ struct TabbarView: View {
 #Preview {
     TabbarView()
         .modelContainer(for: Meal.self, inMemory: true)
+        .environmentObject(TipStore())
 }

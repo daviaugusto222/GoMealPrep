@@ -1,0 +1,134 @@
+{
+  "identifier" : "C17B10C6",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "F6FC10DD",
+      "localizations" : [
+        {
+          "description" : "I'm going to calm down and build some feature",
+          "displayName" : "Buy me some 🍵",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Vou me acalmar e contruir a próxima feature",
+          "displayName" : "Me compre um 🍵",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.david.GoMealPrep.tinyTip",
+      "referenceName" : "Tiny Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "C0BF04F6",
+      "localizations" : [
+        {
+          "description" : "A sweet is always good after lunch",
+          "displayName" : "Buy me a 🍪",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Um doce é sempre bom depois do almoço",
+          "displayName" : "Me compre um 🍪",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.david.GoMealPrep.smallTip",
+      "referenceName" : "Small Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "1315A494",
+      "localizations" : [
+        {
+          "description" : "I'm going to add this to my planning!",
+          "displayName" : "Buy me a 🍕",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Já vou adicionar isso ao meu planejamento!",
+          "displayName" : "Me compre uma 🍕",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.david.GoMealPrep.mediumTip",
+      "referenceName" : "Medium Tip",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_billingIssuesEnabled" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "pt_BR",
+    "_storefront" : "BRA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : {
+          "index" : 1,
+          "type" : "purchase"
+        },
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
