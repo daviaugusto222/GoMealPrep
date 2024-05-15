@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MealCardView: View {
-    @State var mealRow: Meal
+    var mealRow: Meal
     var useby: String {
         let calendario = Calendar.current
         let componentes = calendario.dateComponents([.day], from: Date.now, to: mealRow.expiration)
