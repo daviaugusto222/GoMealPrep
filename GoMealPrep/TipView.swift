@@ -16,7 +16,14 @@ struct TipView: View {
             ZStack {
                 Spacer().containerRelativeFrame([.horizontal, .vertical])
                 VStack(alignment: .center) {
+                    Spacer(minLength: 40)
                     Group {
+                        Image(.tip)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .padding(.vertical)
+                            .accessibilityLabel("Memoji do desenvolvedor com varios icones ao redor representando hobbies")
                         Text("Está gostando do app? \nAjude um desenvolver indie!")
                             .font(.title2)
                             .fontWeight(.bold)
@@ -28,7 +35,7 @@ struct TipView: View {
                     ForEach(store.items) { item in
                         TipCardView(item: item)
                     }
-                    .padding(.vertical, 30)
+                    .padding(.vertical, 20)
                     .padding(.horizontal, 16)
                     .background( Color.bege1.opacity(0.7) )
                     .overlay {
@@ -38,6 +45,7 @@ struct TipView: View {
                     }
                     .foregroundStyle(.black)
                     .clipShape(RoundedRectangle(cornerRadius: 24.0))
+                    Spacer(minLength: 40)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(20)

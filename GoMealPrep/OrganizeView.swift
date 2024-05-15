@@ -52,7 +52,7 @@ struct OrganizeView: View {
                             .foregroundStyle(.primary, .bege2)
                             .symbolRenderingMode(.hierarchical)
                     } description: {
-                        Text("Use o + para adicionar as refeições que você planeja para os próximos dias.")
+                        Text("Use o \(Image(systemName: "plus.circle.fill")) para adicionar as refeições que você planeja para os próximos dias.")
                     }
                 }
             }
