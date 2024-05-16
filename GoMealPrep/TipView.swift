@@ -10,6 +10,7 @@ import StoreKit
 
 struct TipView: View {
     @EnvironmentObject private var store: TipStore
+    @Environment(\.dismiss) var dismiss
     @State private var myProduct: Product?
     var body: some View {
         ScrollView {
@@ -58,6 +59,18 @@ struct TipView: View {
             LinearGradient(
                 colors: [Color.bege1, Color.green1.opacity(0.4)],
                 startPoint: .bottom, endPoint: .top)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    dismiss()
+                } label: {
+                    Label("Fechar", systemImage: "xmark.circle.fill")
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.green2, .green1)
+                        .font(.system(size: 30))
+                }
+            }
         }
         .ignoresSafeArea()
     }
