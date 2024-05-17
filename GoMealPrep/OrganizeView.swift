@@ -65,8 +65,10 @@ struct OrganizeView: View {
                         Label("Adicionar Refeição", systemImage: "plus.circle.fill")
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.green2, .green1)
-                            .font(.system(size: 20))
+                            .font(.title2)
+                            .fontWeight(.medium)
                     }
+                    .buttonStyle(.plain)
                     .symbolEffect(.bounce.up, value: animate)
                     .sensoryFeedback(.selection, trigger: animate)
                     .sheet(isPresented: $showAddMeal) {

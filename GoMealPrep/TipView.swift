@@ -68,8 +68,10 @@ struct TipView: View {
                     Label("Fechar", systemImage: "xmark.circle.fill")
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.green2, .green1)
-                        .font(.system(size: 30))
+                        .font(.title2)
+                        .fontWeight(.medium)
                 }
+                .buttonStyle(.plain)
             }
         }
         .ignoresSafeArea()
