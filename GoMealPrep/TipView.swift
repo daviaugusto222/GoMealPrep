@@ -17,12 +17,12 @@ struct TipView: View {
             ZStack {
                 Spacer().containerRelativeFrame([.horizontal, .vertical])
                 VStack(alignment: .center) {
-                    Spacer(minLength: 40)
+                    Spacer(minLength: 10)
                     Group {
                         Image(.tip)
                             .resizable()
                             .scaledToFit()
-                            .frame(maxWidth: 300)
+                            .frame(maxWidth: 280)
                             .padding(.vertical)
                             .accessibilityLabel("Memoji do desenvolvedor com varios icones ao redor representando hobbies")
                         Text("Está gostando do app? \nAjude um desenvolver indie!")

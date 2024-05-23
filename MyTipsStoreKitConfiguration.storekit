@@ -5,18 +5,18 @@
   ],
   "products" : [
     {
-      "displayPrice" : "0.99",
+      "displayPrice" : "1.90",
       "familyShareable" : false,
       "internalID" : "F6FC10DD",
       "localizations" : [
         {
-          "description" : "I'm going to calm down and build some feature",
-          "displayName" : "Buy me some 🍵",
+          "description" : "I'm going to calm down.",
+          "displayName" : "Buy me some tea!",
           "locale" : "en_US"
         },
         {
-          "description" : "Vou me acalmar e contruir a próxima feature",
-          "displayName" : "Me compre um 🍵",
+          "description" : "Vou me acalmar.",
+          "displayName" : "Me compre um chá!",
           "locale" : "pt_BR"
         }
       ],
@@ -25,18 +25,18 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "4.99",
+      "displayPrice" : "4.90",
       "familyShareable" : false,
       "internalID" : "C0BF04F6",
       "localizations" : [
         {
-          "description" : "A sweet is always good after lunch",
-          "displayName" : "Buy me a 🍪",
+          "description" : "A sweet is always good after lunch.",
+          "displayName" : "Buy me a cookie!",
           "locale" : "en_US"
         },
         {
-          "description" : "Um doce é sempre bom depois do almoço",
-          "displayName" : "Me compre um 🍪",
+          "description" : "Um doce é sempre bom depois do almoço.",
+          "displayName" : "Me compre um biscoito!",
           "locale" : "pt_BR"
         }
       ],
@@ -45,18 +45,18 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "9.99",
+      "displayPrice" : "9.90",
       "familyShareable" : false,
       "internalID" : "1315A494",
       "localizations" : [
         {
-          "description" : "I'm going to add this to my planning!",
-          "displayName" : "Buy me a 🍕",
+          "description" : "I'm going to add this to my planning.",
+          "displayName" : "Buy me some pizza!",
           "locale" : "en_US"
         },
         {
-          "description" : "Já vou adicionar isso ao meu planejamento!",
-          "displayName" : "Me compre uma 🍕",
+          "description" : "Já vou adicionar isso ao meu planejamento.",
+          "displayName" : "Me compre uma pizza!",
           "locale" : "pt_BR"
         }
       ],
@@ -70,9 +70,9 @@
     "_billingGracePeriodEnabled" : false,
     "_billingIssuesEnabled" : false,
     "_failTransactionsEnabled" : false,
-    "_locale" : "en_GB",
+    "_locale" : "pt_BR",
     "_renewalBillingIssuesEnabled" : false,
-    "_storefront" : "USA",
+    "_storefront" : "BRA",
     "_storeKitErrors" : [
       {
         "current" : {

@@ -43,14 +43,13 @@ struct AddEditMealView: View {
                         Label("Fabricação", systemImage: "calendar")
                     }
                     .datePickerStyle(.compact)
-                    HStack(alignment: .center) {
+                    DatePicker(selection: $meal.expiration, displayedComponents: .date) {
                         Label("Validade", systemImage: "calendar.badge.clock")
-                        Spacer()
-                        Text("\(meal.expirationFormatted)")
                     }
+                    .datePickerStyle(.compact)
                 } footer: {
-                    VStack(spacing: 16) {
-                        Text("Data de validade calculada a partir de parâmetros padrões de congelamento.")
+                    VStack() {
+                        Text("Data de validade calculada sete dias após a data de fabricação. Altere sempre que necessário.")
                             .multilineTextAlignment(.center)
                         HStack {
                             Spacer()

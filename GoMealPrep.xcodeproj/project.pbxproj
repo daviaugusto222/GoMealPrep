@@ -22,7 +22,7 @@
 		CEB7E8DB2BEBB22100AADAD5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */; };
 		CEB7E8DD2BEBB3E700AADAD5 /* OrganizeCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */; };
 		CEB7E8DF2BEBB78700AADAD5 /* QuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */; };
-		CEE824992BF46DCF00A51E73 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */; };
+		CEE9461F2BFE24960064F45F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE824992BF46DCF00A51E73 /* StoreKit.framework in Frameworks */,
+				CEE9461F2BFE24960064F45F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoMealPrep/Preview Content\"";
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
@@ -419,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_ASSET_PATHS = "\"GoMealPrep/Preview Content\"";
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
