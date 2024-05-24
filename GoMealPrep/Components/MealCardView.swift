@@ -54,7 +54,7 @@ struct MealCardView: View {
                                        startPoint: .bottom, endPoint: .top))
             } else {
                 ZStack {
-                    Color.red
+                    Color.white
                     Image(systemName: "photo")
                         .resizable()
                         .scaledToFit()

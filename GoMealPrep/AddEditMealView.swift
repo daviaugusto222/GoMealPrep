@@ -48,7 +48,7 @@ struct AddEditMealView: View {
                     }
                     .datePickerStyle(.compact)
                 } footer: {
-                    VStack() {
+                    VStack {
                         Text("Data de validade calculada sete dias após a data de fabricação. Altere sempre que necessário.")
                             .multilineTextAlignment(.center)
                         HStack {
