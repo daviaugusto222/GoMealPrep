@@ -22,6 +22,8 @@
 		CEB7E8DB2BEBB22100AADAD5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */; };
 		CEB7E8DD2BEBB3E700AADAD5 /* OrganizeCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */; };
 		CEB7E8DF2BEBB78700AADAD5 /* QuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */; };
+		CEDBDF2B2CC007BA00D25BFF /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = CEDBDF2A2CC007BA00D25BFF /* GoogleMobileAds */; };
+		CEDBDF342CC00F1600D25BFF /* BannerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDBDF332CC00F1600D25BFF /* BannerContentView.swift */; };
 		CEE9461F2BFE24960064F45F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CF0AD2BF44FD0006FB4C0 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		CEB7E8DA2BEBB22100AADAD5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		CEB7E8DC2BEBB3E700AADAD5 /* OrganizeCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeCardCellView.swift; sourceTree = "<group>"; };
 		CEB7E8DE2BEBB78700AADAD5 /* QuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityView.swift; sourceTree = "<group>"; };
+		CEDBDF2C2CC00BCA00D25BFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CEDBDF332CC00F1600D25BFF /* BannerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDBDF2B2CC007BA00D25BFF /* GoogleMobileAds in Frameworks */,
 				CEE9461F2BFE24960064F45F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +111,7 @@
 		CEB7E8C72BE83F7000AADAD5 /* GoMealPrep */ = {
 			isa = PBXGroup;
 			children = (
+				CEDBDF2C2CC00BCA00D25BFF /* Info.plist */,
 				CEE8249E2BF4FD6F00A51E73 /* Store */,
 				CEB7E8C82BE83F7000AADAD5 /* GoMealPrepApp.swift */,
 				CEADF6C32BEFE403006277D8 /* TabbarView.swift */,
@@ -117,6 +123,7 @@
 				CE102D012BED4CB9006795BD /* Model */,
 				CEB7E8CE2BE83F7400AADAD5 /* Assets.xcassets */,
 				CEB7E8D02BE83F7400AADAD5 /* Preview Content */,
+				CEDBDF332CC00F1600D25BFF /* BannerContentView.swift */,
 			);
 			path = GoMealPrep;
 			sourceTree = "<group>";
@@ -187,6 +194,7 @@
 			mainGroup = CEB7E8BC2BE83F7000AADAD5;
 			packageReferences = (
 				CE2101782BF3C78600C52068 /* XCRemoteSwiftPackageReference "swiftui-lint" */,
+				CEDBDF292CC007BA00D25BFF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = CEB7E8C62BE83F7000AADAD5 /* Products */;
 			projectDirPath = "";
@@ -237,6 +245,7 @@
 			files = (
 				CEADF6C42BEFE403006277D8 /* TabbarView.swift in Sources */,
 				CEB7E8DB2BEBB22100AADAD5 /* Meal.swift in Sources */,
+				CEDBDF342CC00F1600D25BFF /* BannerContentView.swift in Sources */,
 				CEADF6C82BEFE5BD006277D8 /* TipView.swift in Sources */,
 				CEB7E8C92BE83F7000AADAD5 /* GoMealPrepApp.swift in Sources */,
 				CEADF6C22BEE59BC006277D8 /* PhotoPickerView.swift in Sources */,
@@ -393,6 +402,7 @@
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoMealPrep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MealMate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -425,6 +435,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoMealPrep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MealMate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -477,6 +488,14 @@
 				kind = branch;
 			};
 		};
+		CEDBDF292CC007BA00D25BFF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -484,6 +503,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE2101782BF3C78600C52068 /* XCRemoteSwiftPackageReference "swiftui-lint" */;
 			productName = "plugin:SwiftUILintPlugin";
+		};
+		CEDBDF2A2CC007BA00D25BFF /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDBDF292CC007BA00D25BFF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

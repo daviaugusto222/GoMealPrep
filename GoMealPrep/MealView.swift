@@ -16,29 +16,35 @@ struct MealView: View {
                     GridItem(.adaptive(minimum: 171, maximum: .infinity), spacing: 16)]
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    Section {
-                        ForEach(meals) { meal in
-                            MealCardView(mealRow: meal)
+            VStack {
+                BannerContentView(navigationTitle: "Banner")
+                    .frame(height: 55)
+                    .background(.clear)
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        Section {
+                            ForEach(meals) { meal in
+                                MealCardView(mealRow: meal)
+                            }
+                        }
+                    }
+                    .padding()
+                }
+                .navigationTitle("Refeições")
+                .background(.bege1)
+                .overlay {
+                    if meals.isEmpty {
+                        ContentUnavailableView {
+                            Label("Refeições Finalizadas", systemImage: "circle.hexagonpath")
+                                .foregroundStyle(.primary, .bege2)
+                                .symbolRenderingMode(.hierarchical)
+                        } description: {
+                            Text("Adicione novas refeições em Organizar para começar uma novo planejamento.")
                         }
                     }
                 }
-                .padding()
             }
-            .navigationTitle("Refeições")
             .background(.bege1)
-            .overlay {
-                if meals.isEmpty {
-                    ContentUnavailableView {
-                        Label("Refeições Finalizadas", systemImage: "circle.hexagonpath")
-                            .foregroundStyle(.primary, .bege2)
-                            .symbolRenderingMode(.hierarchical)
-                    } description: {
-                        Text("Adicione novas refeições em Organizar para começar uma novo planejamento.")
-                    }
-                }
-            }
         }
     }
 }
