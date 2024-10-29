@@ -15,11 +15,11 @@ struct BannerContentView: View {
     GeometryReader { geometry in
       let adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(geometry.size.width)
 
-      VStack {
+//      VStack {
 //        Spacer()
         BannerView(adSize)
 //          .frame(height: adSize.size.height)
-      }
+//      }
     }
     // [END add_banner_to_view]
   }
